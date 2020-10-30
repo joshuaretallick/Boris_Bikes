@@ -74,13 +74,16 @@ describe DockingStation do
     it "throws an error when docking_station.dock is called and the docking station is at capacity" do
 # The test requires that we create a new docking_station
       docking_station = DockingStation.new
-# Here we are adding a new Bike to the docking_station
-      docking_station.dock(Bike.new)
-# The test expects after all of the above that the docking_station.dock
-# Will now have the bike above stored in it
-# And the following test will add a second bike to the docking_station to
+# And the following test will add 21 bikes to the docking_station to
 # throw the error
-      expect { docking_station.dock(Bike.new) }.to raise_error("Dock at Capacity")
+      expect { 21.times { docking_station.dock Bike.new } }.to raise_error("Dock at Capacity")
+    end
+
+    it "allows us to store 20 bikes without throwing an error" do
+      docking_station = DockingStation.new
+# Adding 20 bikes to docking_station & test is testing that the
+#number of bikes has increased by 20
+      expect { 20.times { docking_station.dock Bike.new } }.to change { docking_station.rack.length }.by(20)
     end
 
   end

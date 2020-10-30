@@ -26,7 +26,7 @@ class DockingStation
   def dock(bike)
 # the method will 'raise' an exception stating no capacity, if
 # the @rack array is at capacity
-    raise "Dock at Capacity" if @rack.length > 0    
+    raise "Dock at Capacity" if @rack.length >= 20    
 # the bike variable created via our Bike class is pushed to be stored
 # in the @rack array ### more info needed
     @rack << bike
