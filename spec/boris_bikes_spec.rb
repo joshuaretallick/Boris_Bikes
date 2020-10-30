@@ -52,7 +52,7 @@ describe DockingStation do
 
   end
 
-# We are now out of the release_bike method above and tesing what does the
+# We are now out of the release_bike method above and testing what does the
 # dock method actually do
   describe 'the #dock method' do
 # It will return a message about putting the bike back in the docking_station
@@ -64,9 +64,24 @@ describe DockingStation do
       bike = Bike.new
 # Here we are docking the bike variable above in the docking_station
       docking_station.dock(bike)
-# The test expects after all of the above that the doacking_station rack
-# Will now have the bike above stored in it ### Needs more info
+# The test expects after all of the above that the docking_station rack
+# Will now have the bike above stored in it
       expect(docking_station.rack).to include(bike)
     end
+
+# the test will throw an error if the user tries to dock a bike but the
+# docking_station is at capacity
+    it "throws an error when docking_station.dock is called and the docking station is at capacity" do
+# The test requires that we create a new docking_station
+      docking_station = DockingStation.new
+# Here we are adding a new Bike to the docking_station
+      docking_station.dock(Bike.new)
+# The test expects after all of the above that the docking_station.dock
+# Will now have the bike above stored in it
+# And the following test will add a second bike to the docking_station to
+# throw the error
+      expect { docking_station.dock(Bike.new) }.to raise_error("Dock at Capacity")
+    end
+
   end
 end
