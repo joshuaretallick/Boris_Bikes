@@ -79,7 +79,9 @@ describe DockingStation do
       expect { 21.times { docking_station.dock Bike.new } }.to raise_error("Dock at Capacity")
     end
 
+# This test is fundamentally checking that by adding 20 bikes that an error won't be produced
     it "allows us to store 20 bikes without throwing an error" do
+# This test requires that we create a new docking_station
       docking_station = DockingStation.new
 # Adding 20 bikes to docking_station & test is testing that the
 #number of bikes has increased by 20
